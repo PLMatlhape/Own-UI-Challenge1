@@ -175,7 +175,6 @@
   box-shadow: 0 4px 12px rgba(96, 103, 207, 0.3);
 }
 
-/* 320px - Extra small mobile */
 @media (max-width: 320px) {
   .card-content {
     padding: 1rem;
@@ -222,7 +221,6 @@
   }
 }
 
-/* 480px - Small mobile */
 @media (min-width: 321px) and (max-width: 480px) {
   .card-content {
     padding: 1.125rem;
@@ -246,7 +244,6 @@
   }
 }
 
-/* 768px - Tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .action-buttons {
     opacity: 1;
@@ -257,7 +254,6 @@
   }
 }
 
-/* 1024px+ - Desktops */
 @media (min-width: 769px) {
   .card-content {
     padding: 1.5rem;

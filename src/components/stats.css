@@ -66,7 +66,6 @@
   margin: 0;
 }
 
-/* 320px - Extra small mobile */
 @media (max-width: 320px) {
   .stats-container {
     gap: 0.5rem;
@@ -95,7 +94,6 @@
   }
 }
 
-/* 480px - Small mobile */
 @media (min-width: 321px) and (max-width: 480px) {
   .stats-container {
     grid-template-columns: repeat(2, 1fr);
@@ -111,7 +109,6 @@
   }
 }
 
-/* 768px - Tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .stats-container {
     grid-template-columns: repeat(2, 1fr);
@@ -136,7 +133,6 @@
   }
 }
 
-/* 1024px+ - Desktops */
 @media (min-width: 769px) {
   .stats-container {
     grid-template-columns: repeat(4, 1fr);

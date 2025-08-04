@@ -1,17 +1,18 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light;
-  color: rgba(17, 24, 39, 1);
-  background-color: #ffffff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --color-primary-dark: #330C2F;
+  --color-primary: #B287D0;
+  --color-secondary: #6067CF;
+  --color-light: #FFFFFF;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-light: #9ca3af;
+  
+ 
+  --gradient-primary: linear-gradient(135deg, #330C2F 0%, #B287D0 50%, #6067CF 100%);
+  --gradient-secondary: linear-gradient(135deg, #B287D0 0%, #6067CF 100%);
+  --gradient-subtle: linear-gradient(135deg, #6067CF 0%, #FFFFFF 100%);
+}
 }
 
 * {

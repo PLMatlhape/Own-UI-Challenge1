@@ -138,7 +138,6 @@
   box-shadow: 0 6px 20px rgba(96, 103, 207, 0.4);
 }
 
-/* 320px - Extra small mobile */
 @media (max-width: 320px) {
   .search-container {
     padding: 0.75rem;
@@ -171,7 +170,6 @@
   }
 }
 
-/* 480px - Small mobile */
 @media (min-width: 321px) and (max-width: 480px) {
   .controls-group {
     display: grid;
@@ -190,7 +188,6 @@
   }
 }
 
-/* 768px - Tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .search-content {
     flex-direction: row;
@@ -221,7 +218,6 @@
   }
 }
 
-/* 1024px+ - Desktops */
 @media (min-width: 769px) {
   .search-container {
     padding: 1.5rem;
