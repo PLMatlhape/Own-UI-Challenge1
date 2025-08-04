@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookmarkPlus, Plus } from 'lucide-react';
-import './EmptyState.css';
+import './emptyState.css';
 
 type EmptyStateProps = {
   hasFilters: boolean;

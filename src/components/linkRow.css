@@ -1,0 +1,180 @@
+.link-row {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.2s;
+}
+
+.link-row:hover {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.row-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.row-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.row-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.row-link-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #6b7280;
+}
+
+.favorite-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  color: #6b7280;
+  transition: color 0.2s;
+}
+
+.favorite-btn:hover {
+  color: #f59e0b;
+}
+
+.favorite-btn.active {
+  color: #f59e0b;
+}
+
+.row-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.row-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.25rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row-description {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row-tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.row-tag {
+  font-size: 0.625rem;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.row-tag.more {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.row-category {
+  font-size: 0.75rem;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.row-action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.375rem;
+  border-radius: 0.25rem;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.row-action-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.row-action-btn.delete:hover {
+  color: #ef4444;
+}
+
+.row-visit-link {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem;
+  color: #3b82f6;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.row-visit-link:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.icon.fill-current {
+  fill: currentColor;
+}
+
+@media (max-width: 768px) {
+  .row-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .row-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .row-actions {
+    justify-content: center;
+  }
+}

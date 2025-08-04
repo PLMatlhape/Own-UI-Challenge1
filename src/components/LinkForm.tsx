@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NewLinkForm } from './Types';
-import './LinkForm.css';
+import './linkForm.css';
 
 type LinkFormProps = {
   newLink: NewLinkForm;

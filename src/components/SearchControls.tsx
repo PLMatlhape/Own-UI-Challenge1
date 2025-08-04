@@ -1,7 +1,7 @@
 import React from 'react';
 import { Search, Plus, Grid, List } from 'lucide-react';
 import { ViewMode } from './Types';
-import './SearchControls.css';
+import './searchControls.css';
 
 type SearchControlsProps = {
   searchTerm: string;
