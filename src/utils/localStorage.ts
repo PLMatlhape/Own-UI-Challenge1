@@ -1,8 +1,6 @@
 import type { Link } from "../components/Types";
 
-
 const STORAGE_KEY = 'link-vault-links';
-
 
 const getSampleData = (): Link[] => [
   {

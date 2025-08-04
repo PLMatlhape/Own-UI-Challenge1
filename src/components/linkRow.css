@@ -122,10 +122,16 @@
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0.375rem;
+  padding: 0;
   border-radius: 0.25rem;
   color: #6b7280;
   transition: all 0.2s;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .row-action-btn:hover {
@@ -140,11 +146,15 @@
 .row-visit-link {
   display: flex;
   align-items: center;
-  padding: 0.375rem;
+  justify-content: center;
+  padding: 0;
   color: #3b82f6;
   text-decoration: none;
   border-radius: 0.25rem;
   transition: all 0.2s;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
 }
 
 .row-visit-link:hover {
@@ -176,5 +186,15 @@
   
   .row-actions {
     justify-content: center;
+  }
+  
+  .row-action-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .row-visit-link {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
