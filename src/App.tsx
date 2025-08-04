@@ -6,7 +6,8 @@ import { LinkForm } from "./components/LinkForm";
 import { Stats } from "./components/Stats";
 import { EmptyState } from "./components/EmptyState";
 import { useLinkVault } from "./hooks/useLinkVault";
-import { Link } from "./components/Types";
+import type { Link } from "./components/Types";
+
 
 function App() {
   const {

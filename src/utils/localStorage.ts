@@ -1,4 +1,5 @@
-import { Link } from '../components/Types';
+import type { Link } from "../components/Types";
+
 
 const STORAGE_KEY = 'link-vault-links';
 
@@ -7,7 +8,7 @@ const getSampleData = (): Link[] => [
   {
     id: 1,
     title: "React Documentation",
-    url: "https://react.co.za"
+    url: "https://react.co.za",
     description: "Official React documentation and guides",
     tags: ["react", "documentation", "frontend"],
     category: "Development",

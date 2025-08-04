@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, NewLinkForm, ViewMode } from '../components/Types';
 import { loadLinksFromStorage, saveLinksToStorage } from '../utils/localStorage';
+import type { Link, NewLinkForm, ViewMode } from '../components/Types';
 
 export const useLinkVault = () => {
   const [links, setLinks] = useState<Link[]>([]);
