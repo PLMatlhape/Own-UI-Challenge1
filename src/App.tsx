@@ -5,8 +5,10 @@ import { SearchControls } from "./components/SearchControls";
 import { LinkForm } from "./components/LinkForm";
 import { Stats } from "./components/Stats";
 import { EmptyState } from "./components/EmptyState";
+import { MobileNav } from "./components/MobileNav";
 import { useLinkVault } from "./hooks/useLinkVault";
-import { Link } from "./components/Types";
+import type { Link } from "./components/Types";
+
 
 function App() {
   const {
@@ -22,6 +24,8 @@ function App() {
     newLink,
     categories,
     allTags,
+    sortBy,
+    notification,
     addLink,
     updateLink,
     deleteLink,
@@ -35,6 +39,7 @@ function App() {
     setSelectedTag,
     setViewMode,
     setShowAddForm,
+    setSortBy,
   } = useLinkVault();
 
   
@@ -62,6 +67,12 @@ function App() {
 
   return (
     <div className="app-container">
+      {notification && (
+        <div className="notification">
+          {notification}
+        </div>
+      )}
+      <MobileNav onAddLink={() => setShowAddForm(true)} />
       <div className="app-content">
         <div className="app-header">
           <h1 className="app-title">Link Vault</h1>
@@ -73,12 +84,14 @@ function App() {
           selectedCategory={selectedCategory}
           selectedTag={selectedTag}
           viewMode={viewMode}
+          sortBy={sortBy}
           categories={categories}
           allTags={allTags}
           onSearchChange={setSearchTerm}
           onCategoryChange={setSelectedCategory}
           onTagChange={setSelectedTag}
           onViewModeChange={setViewMode}
+          onSortChange={setSortBy}
           onAddLink={() => setShowAddForm(true)}
         />
 
