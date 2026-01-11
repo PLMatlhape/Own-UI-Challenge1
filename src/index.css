@@ -1,0 +1,41 @@
+:root {
+  --color-primary-dark: #330c2f;
+  --color-primary: #b287d0;
+  --color-secondary: #6067cf;
+  --color-light: #ffffff;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-light: #9ca3af;
+
+  --gradient-primary: linear-gradient(
+    135deg,
+    #330c2f 0%,
+    #b287d0 50%,
+    #6067cf 100%
+  );
+  --gradient-secondary: linear-gradient(135deg, #b287d0 0%, #6067cf 100%);
+  --gradient-subtle: linear-gradient(135deg, #6067cf 0%, #ffffff 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
