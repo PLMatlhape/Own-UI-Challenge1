@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link2, Star, Copy, Check, Edit2, Trash2, ExternalLink } from 'lucide-react';
-import { Link } from './Types';
-import './LinkRow.css';
+import './linkRow.css';
+import type { Link } from './Types';
 
 type LinkRowProps = {
   link: Link;
