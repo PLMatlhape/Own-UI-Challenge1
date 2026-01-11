@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link2, Star, Copy, Check, Edit2, Trash2, ExternalLink, Clock } from 'lucide-react';
-import { Link } from './Types';
-import './LinkCard.css';
+import './linkCard.css';
+import type { Link } from './Types';
 
 type LinkCardProps = {
   link: Link;
