@@ -1,19 +1,22 @@
 import React from 'react';
 import { Search, Plus, Grid, List } from 'lucide-react';
-import { ViewMode } from './Types';
-import './SearchControls.css';
+import './searchControls.css';
+import type { ViewMode } from './Types';
+import type { SortOption } from '../hooks/useLinkVault';
 
 type SearchControlsProps = {
   searchTerm: string;
   selectedCategory: string;
   selectedTag: string;
   viewMode: ViewMode;
+  sortBy: SortOption;
   categories: string[];
   allTags: string[];
   onSearchChange: (value: string) => void;
   onCategoryChange: (value: string) => void;
   onTagChange: (value: string) => void;
   onViewModeChange: (mode: ViewMode) => void;
+  onSortChange: (sort: SortOption) => void;
   onAddLink: () => void;
 }
 
@@ -22,12 +25,14 @@ export const SearchControls: React.FC<SearchControlsProps> = ({
   selectedCategory,
   selectedTag,
   viewMode,
+  sortBy,
   categories,
   allTags,
   onSearchChange,
   onCategoryChange,
   onTagChange,
   onViewModeChange,
+  onSortChange,
   onAddLink
 }) => {
   return (
@@ -66,6 +71,17 @@ export const SearchControls: React.FC<SearchControlsProps> = ({
             {allTags.map(tag => (
               <option key={tag} value={tag}>#{tag}</option>
             ))}
+          </select>
+
+          <select
+            value={sortBy}
+            onChange={(e) => onSortChange(e.target.value as SortOption)}
+            className="select-input"
+          >
+            <option value="none">Sort By</option>
+            <option value="dateAdded">Date Added</option>
+            <option value="title">Title</option>
+            <option value="category">Category</option>
           </select>
 
           <div className="view-toggle">

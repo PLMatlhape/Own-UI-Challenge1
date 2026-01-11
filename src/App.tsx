@@ -5,10 +5,74 @@ import { SearchControls } from "./components/SearchControls";
 import { LinkForm } from "./components/LinkForm";
 import { Stats } from "./components/Stats";
 import { EmptyState } from "./components/EmptyState";
+import { MobileNav } from "./components/MobileNav";
+import { useLinkVault } from "./hooks/useLinkVault";
+import type { Link } from "./components/Types";
+
 
 function App() {
+  const {
+    links,
+    filteredLinks,
+    searchTerm,
+    selectedCategory,
+    selectedTag,
+    viewMode,
+    showAddForm,
+    editingLink,
+    copiedId,
+    newLink,
+    categories,
+    allTags,
+    sortBy,
+    notification,
+    addLink,
+    updateLink,
+    deleteLink,
+    editLink,
+    toggleFavorite,
+    copyToClipboard,
+    resetForm,
+    handleFormChange,
+    setSearchTerm,
+    setSelectedCategory,
+    setSelectedTag,
+    setViewMode,
+    setShowAddForm,
+    setSortBy,
+  } = useLinkVault();
+
+  
+  console.log('App render - links:', links);
+  console.log('App render - filteredLinks:', filteredLinks);
+
+  const handleAddLink = (): void => {
+    addLink();
+  };
+
+  const handleUpdateLink = (): void => {
+    updateLink();
+  };
+
+  const handleEditLink = (link: Link): void => {
+    editLink(link);
+  };
+
+  const handleDeleteLink = (id: number): void => {
+    deleteLink(id);
+  };
+
+  const hasFilters: boolean =
+    searchTerm !== "" || selectedCategory !== "all" || selectedTag !== "";
+
   return (
     <div className="app-container">
+      {notification && (
+        <div className="notification">
+          {notification}
+        </div>
+      )}
+      <MobileNav onAddLink={() => setShowAddForm(true)} />
       <div className="app-content">
         <div className="app-header">
           <h1 className="app-title">Link Vault</h1>
@@ -20,12 +84,14 @@ function App() {
           selectedCategory={selectedCategory}
           selectedTag={selectedTag}
           viewMode={viewMode}
+          sortBy={sortBy}
           categories={categories}
           allTags={allTags}
           onSearchChange={setSearchTerm}
           onCategoryChange={setSelectedCategory}
           onTagChange={setSelectedTag}
           onViewModeChange={setViewMode}
+          onSortChange={setSortBy}
           onAddLink={() => setShowAddForm(true)}
         />
 
