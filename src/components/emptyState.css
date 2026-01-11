@@ -32,7 +32,6 @@
   margin-bottom: 2rem;
   max-width: 32rem;
 }
-
 .empty-button {
   display: flex;
   align-items: center;
@@ -51,10 +50,8 @@
   box-sizing: border-box;
   box-shadow: 0 4px 14px rgba(96, 103, 207, 0.3);
 }
-
 .empty-button:hover {
   background: var(--gradient-primary);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(96, 103, 207, 0.4);
-}
 }
