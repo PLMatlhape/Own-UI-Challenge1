@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { loadLinksFromStorage, saveLinksToStorage } from '../utils/localStorage';
+import { fetchLinks, addLinkAPI, updateLinkAPI, deleteLinkAPI } from '../utils/api';
 import type { Link, NewLinkForm, ViewMode } from '../components/Types';
+
+export type SortOption = 'dateAdded' | 'title' | 'category' | 'none';
 
 export const useLinkVault = () => {
   const [links, setLinks] = useState<Link[]>([]);
@@ -12,6 +14,8 @@ export const useLinkVault = () => {
   const [editingLink, setEditingLink] = useState<Link | null>(null);
   const [copiedId, setCopiedId] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [sortBy, setSortBy] = useState<SortOption>('none');
+  const [notification, setNotification] = useState<string>('');
 
   const [newLink, setNewLink] = useState<NewLinkForm>({
     title: '',
@@ -25,12 +29,10 @@ export const useLinkVault = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('Loading links from storage...');
-        const savedLinks = loadLinksFromStorage();
-        console.log('Loaded links:', savedLinks);
-        
-        
-        setLinks(savedLinks);
+        console.log('Loading links from API...');
+        const fetchedLinks = await fetchLinks();
+        console.log('Loaded links:', fetchedLinks);
+        setLinks(fetchedLinks);
       } catch (error) {
         console.error('Error loading links:', error);
         setLinks([]);
@@ -43,12 +45,10 @@ export const useLinkVault = () => {
   }, []);
 
   
-  useEffect(() => {
-    if (!isLoading) {
-      console.log('Saving links to storage:', links);
-      saveLinksToStorage(links);
-    }
-  }, [links, isLoading]);
+  const showNotification = (message: string) => {
+    setNotification(message);
+    setTimeout(() => setNotification(''), 3000);
+  };
 
   
   const categories: string[] = links.length > 0 
@@ -73,7 +73,26 @@ export const useLinkVault = () => {
     return matchesSearch && matchesCategory && matchesTag;
   });
 
-  const addLink = (): void => {
+  
+  const sortedLinks = [...filteredLinks].sort((a, b) => {
+    if (sortBy === 'none') return 0;
+    
+    if (sortBy === 'dateAdded') {
+      return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+    }
+    
+    if (sortBy === 'title') {
+      return a.title.localeCompare(b.title);
+    }
+    
+    if (sortBy === 'category') {
+      return a.category.localeCompare(b.category);
+    }
+    
+    return 0;
+  });
+
+  const addLink = async (): Promise<void> => {
     if (newLink.title.trim() && newLink.url.trim()) {
       const link: Link = {
         id: Date.now(),
@@ -88,12 +107,16 @@ export const useLinkVault = () => {
       };
       
       console.log('Adding new link:', link);
-      setLinks(prevLinks => [...prevLinks, link]);
-      resetForm();
+      const addedLink = await addLinkAPI(link);
+      if (addedLink) {
+        setLinks(prevLinks => [...prevLinks, addedLink]);
+        showNotification('Link added successfully!');
+        resetForm();
+      }
     }
   };
 
-  const updateLink = (): void => {
+  const updateLink = async (): Promise<void> => {
     if (newLink.title.trim() && newLink.url.trim() && editingLink) {
       const updatedLink: Link = {
         ...editingLink,
@@ -105,18 +128,26 @@ export const useLinkVault = () => {
       };
       
       console.log('Updating link:', updatedLink);
-      setLinks(prevLinks => 
-        prevLinks.map(link => 
-          link.id === editingLink.id ? updatedLink : link
-        )
-      );
-      resetForm();
+      const result = await updateLinkAPI(updatedLink);
+      if (result) {
+        setLinks(prevLinks => 
+          prevLinks.map(link => 
+            link.id === editingLink.id ? updatedLink : link
+          )
+        );
+        showNotification('Link updated successfully!');
+        resetForm();
+      }
     }
   };
 
-  const deleteLink = (id: number): void => {
+  const deleteLink = async (id: number): Promise<void> => {
     console.log('Deleting link with id:', id);
-    setLinks(prevLinks => prevLinks.filter(link => link.id !== id));
+    const success = await deleteLinkAPI(id);
+    if (success) {
+      setLinks(prevLinks => prevLinks.filter(link => link.id !== id));
+      showNotification('Link deleted successfully!');
+    }
   };
 
   const editLink = (link: Link): void => {
@@ -132,13 +163,20 @@ export const useLinkVault = () => {
     setShowAddForm(true);
   };
 
-  const toggleFavorite = (id: number): void => {
+  const toggleFavorite = async (id: number): Promise<void> => {
     console.log('Toggling favorite for id:', id);
-    setLinks(prevLinks => 
-      prevLinks.map(link => 
-        link.id === id ? { ...link, isFavorite: !link.isFavorite } : link
-      )
-    );
+    const link = links.find(l => l.id === id);
+    if (link) {
+      const updatedLink = { ...link, isFavorite: !link.isFavorite };
+      const result = await updateLinkAPI(updatedLink);
+      if (result) {
+        setLinks(prevLinks => 
+          prevLinks.map(l => 
+            l.id === id ? updatedLink : l
+          )
+        );
+      }
+    }
   };
 
   const copyToClipboard = async (text: string, id: number): Promise<void> => {
@@ -169,7 +207,7 @@ export const useLinkVault = () => {
 
   return {
     links,
-    filteredLinks,
+    filteredLinks: sortedLinks,
     searchTerm,
     selectedCategory,
     selectedTag,
@@ -181,6 +219,8 @@ export const useLinkVault = () => {
     categories,
     allTags,
     isLoading,
+    sortBy,
+    notification,
     addLink,
     updateLink,
     deleteLink,
@@ -193,6 +233,7 @@ export const useLinkVault = () => {
     setSelectedCategory,
     setSelectedTag,
     setViewMode,
-    setShowAddForm
+    setShowAddForm,
+    setSortBy
   };
 };

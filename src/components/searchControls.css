@@ -170,7 +170,7 @@
   }
 }
 
-@media (min-width: 321px) and (max-width: 480px) {
+@media (min-width: 321px) and (max-width: 768px) {
   .controls-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -178,17 +178,27 @@
     align-items: start;
   }
   
+  .select-input {
+    width: 100%;
+  }
+  
   .view-toggle {
     grid-column: 1 / -1;
     justify-self: center;
+    width: auto;
   }
   
   .add-button {
-    grid-column: 1 / -1;
+    display: none; /* Hide add button on mobile since it's in hamburger menu */
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .search-container {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
   .search-content {
     flex-direction: row;
     align-items: center;

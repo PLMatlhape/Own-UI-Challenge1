@@ -10,8 +10,6 @@ export const loadLinksFromStorage = (): Link[] => {
     if (stored) {
       const parsedLinks = JSON.parse(stored);
       console.log('Parsed links:', parsedLinks);
-      
-      
       return Array.isArray(parsedLinks) ? parsedLinks : [];
     }
     
