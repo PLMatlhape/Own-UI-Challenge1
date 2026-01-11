@@ -1,17 +1,20 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --color-primary-dark: #330c2f;
+  --color-primary: #b287d0;
+  --color-secondary: #6067cf;
+  --color-light: #ffffff;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-light: #9ca3af;
 
-  color-scheme: light;
-  color: rgba(17, 24, 39, 1);
-  background-color: #ffffff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --gradient-primary: linear-gradient(
+    135deg,
+    #330c2f 0%,
+    #b287d0 50%,
+    #6067cf 100%
+  );
+  --gradient-secondary: linear-gradient(135deg, #b287d0 0%, #6067cf 100%);
+  --gradient-subtle: linear-gradient(135deg, #6067cf 0%, #ffffff 100%);
 }
 
 * {
@@ -32,6 +35,7 @@ button {
   font-size: inherit;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: inherit;
 }
