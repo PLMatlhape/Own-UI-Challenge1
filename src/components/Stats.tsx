@@ -1,7 +1,7 @@
 import React from 'react';
 import { BookmarkPlus, Star, Tag, Filter } from 'lucide-react';
-import { Link } from './Types';
-import './Stats.css';
+import './stats.css';
+import type { Link } from './Types';
 
 type StatsProps = {
   links: Link[];
